@@ -1,0 +1,96 @@
+<!doctype html>
+<!-- Focused layout: hero will emphasize "Daniel Pinto" and the profile image at images/profile1.jpg; navbar left unchanged -->
+<html lang="en">
+
+<head> <!--is this for Chrome to get some background information?-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Daniel G. Pinto | Computer Engineer</title>
+    <meta name="description" content="A concise description of your website." />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="favicon.ico" />
+</head>
+
+<body>
+    <!-- Site Header / Navigation -->
+    <header id="site-header" class="site-header" role="banner">
+        <div class="container header-inner">
+            <a href="index.html" class="site-logo" aria-label="Home">DGP</a>
+
+            <nav id="main-nav" class="main-nav" role="navigation" aria-label="Main Navigation">
+                <ul class="nav-list">
+                    <li><a class="nav-link" href="index.html">Home</a></li>
+                    <li><a class="nav-link" href="about.html">About</a></li>
+                    <li><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+                    <li><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <button class="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="content" role="main">
+        <!-- Hero: focused on Daniel Pinto and profile image -->
+        <section id="home" class="hero" aria-label="Introduction">
+            <div class="container hero-inner profile-hero">
+                <div class="profile-photo" aria-hidden="false">
+                    <img src="images/profile1.jpg" alt="Portrait of Daniel Pinto" class="profile-img" loading="lazy"
+                        decoding="async" />
+                </div>
+
+                <div class="hero-content">
+                    <h1 class="hero-title">Daniel G. Pinto</h1>
+                    <p class="hero-subtitle">Advancing the state of the art in computing and machine intelligence</p>
+
+                    <div class="hero-cta">
+                        <a class="btn btn-primary" href="contact.html">Reach out</a>
+                        <a class="btn btn-outline" href="portfolio.html">See my projects</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                <p>&copy; <span id="year"></span> Daniel G. Pinto</p>
+            </div>
+            <div class="footer-right">
+                <ul class="social-list" aria-label="Social links">
+                    <li><a href="https://www.linkedin.com/in/daniel-pinto-292037207/" aria-label="LinkedIn">LinkedIn</a>
+                    </li>
+                    <li><a href="https://github.com/DanielPinto05" aria-label="GitHub">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Minimal script hooks -->
+    <script>
+        // Insert current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Simple nav toggle for small screens (style-controlled)
+        (function () {
+            var btn = document.querySelector('.nav-toggle');
+            var nav = document.getElementById('main-nav');
+            if (!btn || !nav) return;
+            btn.addEventListener('click', function () {
+                var expanded = btn.getAttribute('aria-expanded') === 'true';
+                btn.setAttribute('aria-expanded', !expanded);
+                nav.classList.toggle('open');
+            });
+        })();
+    </script>
+</body>
+
+</html>

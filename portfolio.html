@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Portfolio — Daniel Pinto</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- injected header -->
+    <div id="header-placeholder"></div>
+
+    <main class="container">
+        <h1>Portfolio</h1>
+        <p class="lede">Selected projects showcasing recent work.</p>
+        <div class="portfolio-grid">
+            <!-- Project Card: AMP -->
+            <div class="portfolio-card">
+                <div class="portfolio-card-content">
+                    <h2 class="project-title">AMP</h2>
+                    <p class="project-description">A simple multicycle RISC-V processor implementation</p>
+
+                    <!-- Project Images -->
+                    <div class="project-images">
+                        <img src="images/amp-project.jpg" alt="AMP Project Screenshot" loading="lazy" />
+                        <!-- Add more images as needed:
+                        <img src="images/amp-project-2.jpg" alt="AMP Project Detail" loading="lazy" />
+                        <img src="images/amp-project-3.jpg" alt="AMP Project Architecture" loading="lazy" />
+                        -->
+                    </div>
+
+                    <!-- Project Links -->
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                            <span>GitHub Repository</span>
+                            <span aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Duplicate this card structure for more projects -->
+
+        </div>
+    </main>
+
+    <!-- injected footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        (function () {
+            // simple include helper
+            function include(path, containerId, onload) {
+                fetch(path).then(function (r) {
+                    if (!r.ok) throw new Error('Failed to load ' + path);
+                    return r.text();
+                }).then(function (html) {
+                    document.getElementById(containerId).innerHTML = html;
+                    if (typeof onload === 'function') onload();
+                }).catch(function (err) {
+                    console.error(err);
+                });
+            }
+
+            // highlight current nav link
+            function highlightNav() {
+                var current = location.pathname.split('/').pop() || 'index.html';
+                var links = document.querySelectorAll('#main-nav .nav-link');
+                links.forEach(function (a) {
+                    var href = a.getAttribute('href');
+                    if (href === current || (href === 'index.html' && current === '')) {
+                        a.setAttribute('aria-current', 'page');
+                    } else {
+                        a.removeAttribute('aria-current');
+                    }
+                });
+            }
+
+            // wire up nav toggle
+            function wireNavToggle() {
+                var btn = document.querySelector('.nav-toggle');
+                var nav = document.getElementById('main-nav');
+                if (!btn || !nav) return;
+                btn.addEventListener('click', function () {
+                    var expanded = btn.getAttribute('aria-expanded') === 'true';
+                    btn.setAttribute('aria-expanded', !expanded);
+                    nav.classList.toggle('open');
+                });
+            }
+
+            // set current year in footer
+            function setYear() {
+                var y = document.getElementById('year');
+                if (y) y.textContent = new Date().getFullYear();
+            }
+
+            include('header.html', 'header-placeholder', function () {
+                highlightNav();
+                wireNavToggle();
+            });
+            include('footer.html', 'footer-placeholder', setYear);
+        })();
+    </script>
+</body>
+
+</html>

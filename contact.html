@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contact — Daniel Pinto</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- injected header -->
+    <div id="header-placeholder"></div>
+
+    <main class="container">
+        <h1>Contact</h1>
+        <p class="lede">Let's talk! Always looking to make new friends.</p>
+
+        <!-- Success/Error Messages -->
+        <div id="form-status" class="form-status" style="display: none;"></div>
+
+        <!--
+            FormSpree Setup Instructions:
+            1. Sign up at https://formspree.io (free)
+            2. Get your form endpoint URL
+            3. Replace 'YOUR_EMAIL' below with your email or FormSpree form ID
+            Example: action="https://formspree.io/f/YOUR_FORM_ID"
+        -->
+        <form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_EMAIL" method="POST">
+            <div class="form-row">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" required />
+            </div>
+            <div class="form-row">
+                <label for="email">Email</label>
+                <input id="email" name="_replyto" type="email" required />
+            </div>
+            <div class="form-row">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="6" required></textarea>
+            </div>
+
+            <!-- Hidden field for spam protection -->
+            <input type="text" name="_gotcha" style="display:none" />
+
+            <div class="form-row form-actions">
+                <button type="submit" class="btn btn-primary" id="submit-btn">Send Message</button>
+            </div>
+        </form>
+    </main>
+
+    <!-- injected footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        (function () {
+            // simple include helper
+            function include(path, containerId, onload) {
+                fetch(path).then(function (r) {
+                    if (!r.ok) throw new Error('Failed to load ' + path);
+                    return r.text();
+                }).then(function (html) {
+                    document.getElementById(containerId).innerHTML = html;
+                    if (typeof onload === 'function') onload();
+                }).catch(function (err) {
+                    console.error(err);
+                });
+            }
+
+            // highlight current nav link
+            function highlightNav() {
+                var current = location.pathname.split('/').pop() || 'index.html';
+                var links = document.querySelectorAll('#main-nav .nav-link');
+                links.forEach(function (a) {
+                    var href = a.getAttribute('href');
+                    if (href === current || (href === 'index.html' && current === '')) {
+                        a.setAttribute('aria-current', 'page');
+                    } else {
+                        a.removeAttribute('aria-current');
+                    }
+                });
+            }
+
+            // wire up nav toggle
+            function wireNavToggle() {
+                var btn = document.querySelector('.nav-toggle');
+                var nav = document.getElementById('main-nav');
+                if (!btn || !nav) return;
+                btn.addEventListener('click', function () {
+                    var expanded = btn.getAttribute('aria-expanded') === 'true';
+                    btn.setAttribute('aria-expanded', !expanded);
+                    nav.classList.toggle('open');
+                });
+            }
+
+            // set current year in footer
+            function setYear() {
+                var y = document.getElementById('year');
+                if (y) y.textContent = new Date().getFullYear();
+            }
+
+            include('header.html', 'header-placeholder', function () {
+                highlightNav();
+                wireNavToggle();
+            });
+            include('footer.html', 'footer-placeholder', setYear);
+
+            // Contact form handling
+            var form = document.getElementById('contact-form');
+            var statusDiv = document.getElementById('form-status');
+            var submitBtn = document.getElementById('submit-btn');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Disable button and show loading state
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+
+                var formData = new FormData(form);
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(function (response) {
+                    if (response.ok) {
+                        // Success
+                        statusDiv.className = 'form-status form-status-success';
+                        statusDiv.textContent = 'Thanks for your message! I\'ll get back to you soon.';
+                        statusDiv.style.display = 'block';
+                        form.reset();
+                    } else {
+                        // Error
+                        statusDiv.className = 'form-status form-status-error';
+                        statusDiv.textContent = 'Oops! There was a problem sending your message. Please try again.';
+                        statusDiv.style.display = 'block';
+                    }
+                }).catch(function () {
+                    // Network error
+                    statusDiv.className = 'form-status form-status-error';
+                    statusDiv.textContent = 'Network error. Please check your connection and try again.';
+                    statusDiv.style.display = 'block';
+                }).finally(function () {
+                    // Re-enable button
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message';
+
+                    // Scroll to status message
+                    statusDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>
