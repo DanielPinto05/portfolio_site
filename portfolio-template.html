@@ -1,0 +1,43 @@
+<!--
+    PORTFOLIO CARD TEMPLATE
+
+    Copy this entire <div class="portfolio-card"> block and paste it into portfolio.html
+    within the <div class="portfolio-grid"> section. Update the content as needed.
+
+    Tips:
+    - Keep project titles short and descriptive
+    - Use clear, concise descriptions (2-3 sentences)
+    - Images should be 800-1200px wide for best quality
+    - Add multiple images by adding more <img> tags in the .project-images div
+    - All images are responsive and will preserve aspect ratio
+-->
+
+<div class="portfolio-card">
+    <div class="portfolio-card-content">
+        <h2 class="project-title">Project Name</h2>
+        <p class="project-description">A brief description of what this project is about. Explain the technology stack, the problem it solves, or the skills it demonstrates. Keep it concise and engaging.</p>
+
+        <!-- Project Images -->
+        <div class="project-images">
+            <img src="images/portfolio/project-screenshot.png" alt="Project Name Screenshot" loading="lazy" />
+            <!-- To add more images, duplicate the img tag above and change the src and alt text:
+            <img src="images/portfolio/project-detail.png" alt="Project Name Detail" loading="lazy" />
+            <img src="images/portfolio/project-architecture.png" alt="Project Architecture" loading="lazy" />
+            -->
+        </div>
+
+        <!-- Project Links -->
+        <div class="project-links">
+            <a href="https://github.com/yourusername/project-repo" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                <span>GitHub Repository</span>
+                <span aria-hidden="true">→</span>
+            </a>
+            <!-- Optional: Add a second link to live demo or project website:
+            <a href="https://project-url.com" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                <span>Live Demo</span>
+                <span aria-hidden="true">→</span>
+            </a>
+            -->
+        </div>
+    </div>
+</div>

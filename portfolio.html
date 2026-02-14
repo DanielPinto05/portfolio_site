@@ -5,7 +5,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Portfolio — Daniel Pinto</title>
+    <meta name="description" content="Explore Daniel Pinto's engineering portfolio featuring RISC-V processor implementations, assemblers, emulators, and systems programming projects." />
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Portfolio — Daniel Pinto" />
+    <meta property="og:description" content="Explore Daniel Pinto's engineering portfolio featuring RISC-V processor implementations, assemblers, emulators, and systems programming projects." />
+    <meta property="og:url" content="https://yourwebsite.com/portfolio.html" />
+    <meta property="og:image" content="https://yourwebsite.com/images/portfolio/amp.png" />
+
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 </head>
 
 <body>
@@ -14,17 +24,24 @@
 
     <main class="container">
         <h1>Portfolio</h1>
-        <p class="lede">Selected projects showcasing recent work.</p>
+        <p class="lede">Some stuff I'm working on and have worked on.</p>
         <div class="portfolio-grid">
+            <!--
+                To add more portfolio cards, see portfolio-template.html for a full template.
+                Simply copy the portfolio-card structure and customize the content.
+            -->
             <!-- Project Card: AMP -->
             <div class="portfolio-card">
                 <div class="portfolio-card-content">
                     <h2 class="project-title">AMP</h2>
-                    <p class="project-description">A simple multicycle RISC-V processor implementation</p>
+                    <p class="project-description">A simple multicycle RISC-V processor implementation, collaboration
+                        with <a href="https://www.linkedin.com/in/fadi-ajaj-03859b388/?originalSubdomain=ca">Fadi
+                            Ajaj</a>. Image source: S.
+                        Harris and D. Harris "Digital Design and Computer Architecture". In progress as of Feb 2026.</p>
 
                     <!-- Project Images -->
                     <div class="project-images">
-                        <img src="images/amp-project.jpg" alt="AMP Project Screenshot" loading="lazy" />
+                        <img src="images/portfolio/amp.png" alt="AMP Project Screenshot" loading="lazy" />
                         <!-- Add more images as needed:
                         <img src="images/amp-project-2.jpg" alt="AMP Project Detail" loading="lazy" />
                         <img src="images/amp-project-3.jpg" alt="AMP Project Architecture" loading="lazy" />
@@ -33,7 +50,37 @@
 
                     <!-- Project Links -->
                     <div class="project-links">
-                        <a href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        <a href="https://github.com/DanielPinto05/AMP" class="btn btn-primary" target="_blank"
+                            rel="noopener noreferrer">
+                            <span>GitHub Repository</span>
+                            <span aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Duplicate this card structure for more projects -->
+
+            <!-- Project Card: RVEM -->
+            <div class="portfolio-card">
+                <div class="portfolio-card-content">
+                    <h2 class="project-title">rvem</h2>
+                    <p class="project-description">A RISC-V instruction set assembler and emulator. Currently in
+                        progress as of Feb 2026.</p>
+
+                    <!-- Project Images -->
+                    <div class="project-images">
+                        <!-- <img src="https://github.com/DanielPinto05/rvem" alt="rvem project image" loading="lazy" /> -->
+                        <!-- Add more images as needed:
+                        <img src="images/amp-project-2.jpg" alt="AMP Project Detail" loading="lazy" />
+                        <img src="images/amp-project-3.jpg" alt="AMP Project Architecture" loading="lazy" />
+                        -->
+                    </div>
+
+                    <!-- Project Links -->
+                    <div class="project-links">
+                        <a href="https://github.com/DanielPinto05/AMP" class="btn btn-primary" target="_blank"
+                            rel="noopener noreferrer">
                             <span>GitHub Repository</span>
                             <span aria-hidden="true">→</span>
                         </a>
