@@ -63,60 +63,10 @@
     <!-- injected footer -->
     <div id="footer-placeholder"></div>
 
+    <script src="main.js"></script>
     <script>
+        // Contact form handling (page-specific)
         (function () {
-            // simple include helper
-            function include(path, containerId, onload) {
-                fetch(path).then(function (r) {
-                    if (!r.ok) throw new Error('Failed to load ' + path);
-                    return r.text();
-                }).then(function (html) {
-                    document.getElementById(containerId).innerHTML = html;
-                    if (typeof onload === 'function') onload();
-                }).catch(function (err) {
-                    console.error(err);
-                });
-            }
-
-            // highlight current nav link
-            function highlightNav() {
-                var current = location.pathname.split('/').pop() || 'index.html';
-                var links = document.querySelectorAll('#main-nav .nav-link');
-                links.forEach(function (a) {
-                    var href = a.getAttribute('href');
-                    if (href === current || (href === 'index.html' && current === '')) {
-                        a.setAttribute('aria-current', 'page');
-                    } else {
-                        a.removeAttribute('aria-current');
-                    }
-                });
-            }
-
-            // wire up nav toggle
-            function wireNavToggle() {
-                var btn = document.querySelector('.nav-toggle');
-                var nav = document.getElementById('main-nav');
-                if (!btn || !nav) return;
-                btn.addEventListener('click', function () {
-                    var expanded = btn.getAttribute('aria-expanded') === 'true';
-                    btn.setAttribute('aria-expanded', !expanded);
-                    nav.classList.toggle('open');
-                });
-            }
-
-            // set current year in footer
-            function setYear() {
-                var y = document.getElementById('year');
-                if (y) y.textContent = new Date().getFullYear();
-            }
-
-            include('header.html', 'header-placeholder', function () {
-                highlightNav();
-                wireNavToggle();
-            });
-            include('footer.html', 'footer-placeholder', setYear);
-
-            // Contact form handling
             var form = document.getElementById('contact-form');
             var statusDiv = document.getElementById('form-status');
             var submitBtn = document.getElementById('submit-btn');

@@ -5,12 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>About — Daniel Pinto</title>
-    <meta name="description" content="Learn about Daniel Pinto's background in computer engineering, approach to projects, and technical expertise." />
+    <meta name="description"
+        content="Learn about Daniel Pinto's background in computer engineering, approach to projects, and technical expertise." />
 
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="About — Daniel Pinto" />
-    <meta property="og:description" content="Learn about Daniel Pinto's background in computer engineering, approach to projects, and technical expertise." />
+    <meta property="og:description"
+        content="Learn about Daniel Pinto's background in computer engineering, approach to projects, and technical expertise." />
     <meta property="og:url" content="https://danielgpinto.ca/about.html" />
 
     <link rel="stylesheet" href="style.css" />
@@ -23,15 +25,18 @@
 
     <main class="container">
         <h1>About</h1>
-        <p class="lede">Short paragraph about you or your business. Keep it concise and focused on value.</p>
         <div class="about-grid">
             <div class="about-item">
-                <h3>Our Mission</h3>
-                <p>One-sentence mission statement or summary of what you do.</p>
+                <img src="images/about_pic.jpg" alt="Daniel Pinto" class="about-image" />
             </div>
             <div class="about-item">
-                <h3>Our Process</h3>
-                <p>Brief description of how you work with clients or approach projects.</p>
+                <h2>My Mission</h2>
+                <p>I'm trying to build cool things that change the world, and have some fun along the way! I'm a
+                    computer engineer interested in digital design, systems software, and microarchitecture. Above all,
+                    I love learning and never plan on stopping. </p>
+                <p>I believe that collaboration and serendipity make the world go round, so reach out if you want to talk!
+
+                </p>
             </div>
         </div>
     </main>
@@ -39,60 +44,7 @@
     <!-- injected footer -->
     <div id="footer-placeholder"></div>
 
-    <script>
-        (function () {
-            // simple include helper
-            function include(path, containerId, onload) {
-                fetch(path).then(function (r) {
-                    if (!r.ok) throw new Error('Failed to load ' + path);
-                    return r.text();
-                }).then(function (html) {
-                    document.getElementById(containerId).innerHTML = html;
-                    if (typeof onload === 'function') onload();
-                }).catch(function (err) {
-                    console.error(err);
-                });
-            }
-
-            // highlight current nav link
-            function highlightNav() {
-                var current = location.pathname.split('/').pop() || 'index.html';
-                var links = document.querySelectorAll('#main-nav .nav-link');
-                links.forEach(function (a) {
-                    var href = a.getAttribute('href');
-                    if (href === current || (href === 'index.html' && current === '')) {
-                        a.setAttribute('aria-current', 'page');
-                    } else {
-                        a.removeAttribute('aria-current');
-                    }
-                });
-            }
-
-            // wire up nav toggle
-            function wireNavToggle() {
-                var btn = document.querySelector('.nav-toggle');
-                var nav = document.getElementById('main-nav');
-                if (!btn || !nav) return;
-                btn.addEventListener('click', function () {
-                    var expanded = btn.getAttribute('aria-expanded') === 'true';
-                    btn.setAttribute('aria-expanded', !expanded);
-                    nav.classList.toggle('open');
-                });
-            }
-
-            // set current year in footer
-            function setYear() {
-                var y = document.getElementById('year');
-                if (y) y.textContent = new Date().getFullYear();
-            }
-
-            include('header.html', 'header-placeholder', function () {
-                highlightNav();
-                wireNavToggle();
-            });
-            include('footer.html', 'footer-placeholder', setYear);
-        })();
-    </script>
+    <script src="main.js"></script>
 </body>
 
 </html>

@@ -407,6 +407,30 @@ body {
     box-shadow: 0 12px 32px rgba(16, 24, 40, 0.1);
 }
 
+/* Image styling for about page */
+.about-image {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+}
+
+/* Remove border from image container for cleaner look */
+.about-item:first-child {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+.about-item:first-child:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.about-item h2,
 .about-item h3 {
     margin: 0 0 12px 0;
     font-size: 20px;
