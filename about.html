@@ -17,6 +17,37 @@
 
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://danielgpinto.ca/about.html" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "mainEntity": {
+            "@type": "Person",
+            "name": "Daniel G. Pinto",
+            "jobTitle": "Computer Engineer",
+            "url": "https://danielgpinto.ca"
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://danielgpinto.ca/"
+            }, {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "About",
+                "item": "https://danielgpinto.ca/about.html"
+            }]
+        }
+    }
+    </script>
 </head>
 
 <body>
